@@ -1,0 +1,7 @@
+textures:
+  - id: tree
+    path: textures/tree.png
+
+sounds:
+  - id: sound1
+    path: sounds/sound1.wav
