@@ -146,7 +146,11 @@
     <ClInclude Include="A_Entity.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="CollisionComponent.h" />
+    <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="ICollisionable.h" />
     <ClInclude Include="MeshFilter.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Physics.h" />
@@ -161,7 +165,11 @@
     <ClCompile Include="A_Entity.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CollisionComponent.cpp" />
+    <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="GamuEnginu.cpp" />
+    <ClCompile Include="ICollisionable.cpp" />
     <ClCompile Include="MeshFilter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

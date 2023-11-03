@@ -5,6 +5,7 @@
 
 MyGameEngine::Physics::Physics() : gravity(0.0f, 10.0f), world(gravity)
 {
+	world.SetContactListener(&collisionListener);
 }
 
 MyGameEngine::Physics::~Physics()

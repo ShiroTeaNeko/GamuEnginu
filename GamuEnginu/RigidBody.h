@@ -18,6 +18,7 @@ namespace MyGameEngine {
 		void SetPosition(b2Vec2 position, float angle);
 		void SetLinearVelocity(b2Vec2 velocity);
 		void SetAngularVelocity(float velocity);
+		//void SetUserData(void* data);
 
 		// Getters
 		b2Vec2 GetPosition();

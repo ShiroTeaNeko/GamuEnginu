@@ -5,6 +5,7 @@
 #include <GamuEnginu/ResourceManager.h>
 #include <GamuEnginu/RigidBody.h>
 #include <GamuEnginu/BoxCollider.h>
+#include <GamuEnginu/CollisionComponent.h>
 #include <yaml-cpp/yaml.h>
 #include <GamuEnginu/Physics.h>
 
@@ -36,6 +37,8 @@ int main()
 	boxCollider->setDensity(1.0f);
 	boxCollider->setFriction(0.3f);
 	boxCollider->createFixture(rigidBody->GetBody());
+	MyGameEngine::CollisionComponent* collisionComponent = app->CreateComponent<MyGameEngine::CollisionComponent>(*treeEntity);
+	//rigidBody->SetUserData(collisionComponent->GetOwner());
 	
 	//Setup Ground
 	MyGameEngine::A_Entity* groundEntity = app->CreateEntity("GroundEntity");

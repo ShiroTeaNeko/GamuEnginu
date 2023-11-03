@@ -67,6 +67,11 @@ void MyGameEngine::RigidBody::SetAngularVelocity(float velocity)
 	}
 }
 
+/*void MyGameEngine::RigidBody::SetUserData(void* data)
+{
+	body->SetUserData(data);
+}*/
+
 b2Vec2 MyGameEngine::RigidBody::GetPosition()
 {
 	if (body == nullptr) {

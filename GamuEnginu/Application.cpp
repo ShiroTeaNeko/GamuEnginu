@@ -3,7 +3,6 @@
 
 #include "pch.h"
 #include "Application.h"
-#include "RigidBody.h"
 
 MyGameEngine::Application* MyGameEngine::Application::_instance;
 

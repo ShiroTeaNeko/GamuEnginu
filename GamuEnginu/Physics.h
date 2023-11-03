@@ -1,5 +1,6 @@
 #pragma once
 #include "box2d/box2d.h"
+#include "CollisionListener.h"
 
 namespace MyGameEngine {
 	class Physics
@@ -8,6 +9,7 @@ namespace MyGameEngine {
 	protected:
 		b2Vec2 gravity;
 		b2World world;
+		CollisionListener collisionListener;
 	public:
 		Physics();
 		~Physics();

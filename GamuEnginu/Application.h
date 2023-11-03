@@ -4,6 +4,7 @@
 #include "A_Component.h"
 #include "Physics.h"
 #include "Camera.h"
+#include "RigidBody.h"
 
 namespace MyGameEngine {
 	class Application
