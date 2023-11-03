@@ -3,7 +3,7 @@
 #include "RigidBody.h"
 #include "Application.h"
 
-MyGameEngine::Physics::Physics() : gravity(0.0f, -9.81f), world(gravity)
+MyGameEngine::Physics::Physics() : gravity(0.0f, 10.0f), world(gravity)
 {
 }
 
@@ -28,9 +28,10 @@ void MyGameEngine::Physics::Update(float deltaTime)
 		}
 	}
 
+
     int velocityIterations = 6;
     int positionIterations = 2;
-    world.Step(deltaTime, velocityIterations, positionIterations);
+	world.Step(deltaTime, velocityIterations, positionIterations);
     
 	//set entity position to rb position
     for(A_Entity* entity : app->GetEntities())

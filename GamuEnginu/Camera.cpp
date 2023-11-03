@@ -1,21 +1,42 @@
 #include "pch.h"
 #include "Camera.h"
-
+#include "Application.h"
+#include "A_Entity.h"
 
 
 MyGameEngine::Camera::Camera()
 {
+	view = sf::View(Application::GetInstance()->window.getDefaultView());
 }
 
-sf::View MyGameEngine::Camera::SetView(sf::Vector2u windowSize)
+void MyGameEngine::Camera::EntityToFollow(A_Entity* entityToFollow)
 {
-	sf::View view;
-	view.zoom(_zoomLevel);
-	view.setCenter(_centerPos);
-	view.setSize(sf::Vector2f(windowSize.x, windowSize.y));
-	//view.setViewport(sf::FloatRect(0.25f, 0.25, 0.5f, 0.5f));
-	view.setRotation(_rotation);
-	return view;
+	entityToFollow = entityToFollow;
+}
+
+void MyGameEngine::Camera::SetZoom(float zoom)
+{
+	view.zoom(zoom);
+}
+
+void MyGameEngine::Camera::SetSize(float sizeX, float sizeY)
+{
+	view.setSize(sizeX, sizeY);
+}
+
+void MyGameEngine::Camera::SetViewport(sf::FloatRect viewport)
+{
+	view.setViewport(viewport);
+}
+
+void MyGameEngine::Camera::SetRotation(float rotation)
+{
+	view.setRotation(rotation);
+}
+
+void MyGameEngine::Camera::Rotate(float rotateAmount)
+{
+	view.rotate(rotateAmount);
 }
 
 void MyGameEngine::Camera::Awake()
@@ -33,4 +54,9 @@ void MyGameEngine::Camera::Update(float deltaTime)
 
 void MyGameEngine::Camera::LateUpdate(float deltaTime)
 {
+	if (entityToFollow)
+	{
+		view.setCenter(entityToFollow->getPosition());
+		Application::GetInstance()->SetView(view);
+	}
 }

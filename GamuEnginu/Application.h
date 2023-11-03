@@ -10,7 +10,6 @@ namespace MyGameEngine {
 	{
 	private:
 	protected:
-		sf::RenderWindow window;
 		std::vector<MyGameEngine::A_Entity*> _entities;
 		std::vector<MyGameEngine::A_Component*> _components;
 		std::map<A_Entity*, A_Component*> _linkComponentAndEntity;
@@ -19,21 +18,23 @@ namespace MyGameEngine {
 	public:
 		Application();
 		~Application();
+		sf::RenderWindow window;
 		void Awake(int windowSizeX, int windowSizeY, std::string windowName);
 		void Start();
-		void Loop(Camera& camera);
+		void Loop();
 
+		void SetView(sf::View& view);
 
 		A_Entity* CreateEntity(std::string name);
 
 		static Application* GetInstance();
 
 		template<typename T>
-		T* CreateComponent(A_Entity* entity)
+		T* CreateComponent(A_Entity& entity)
 		{
 			T* component = new T();
-			_linkComponentAndEntity[entity] = component;
-			entity->_components.push_back(component);
+			//_linkComponentAndEntity[entity] = component;
+			entity._components.push_back(component);
 			return component;
 		}
 

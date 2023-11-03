@@ -1,21 +1,27 @@
 #pragma once
-#include "A_Component.h"
 #include <SFML/Graphics.hpp>
+#include "A_Component.h"
 
 namespace MyGameEngine {
+	class A_Entity;
 	class Camera : public A_Component
 	{
 	private:
 
 	protected:
-
+		A_Entity* entityToFollow;
 	public:
 		Camera();
-		sf::View SetView(sf::Vector2u windowSize);
+		virtual void EntityToFollow(A_Entity* entityToFollow);
+		
+		virtual void SetZoom(float zoom);
+		virtual void SetSize(float sizeX, float sizeY);
 
-		float _zoomLevel{};
-		float _rotation{};
-		sf::Vector2f _centerPos;
+		virtual void SetViewport(sf::FloatRect viewport);
+
+		virtual void SetRotation(float rotation);
+		virtual void Rotate(float rotateAmount);
+		sf::View view;
 
 		void Awake() override;
 		void Start() override;

@@ -34,52 +34,42 @@ void MyGameEngine::Application::Start()
 	}
 }
 
-void MyGameEngine::Application::Loop(Camera &camera)
+void MyGameEngine::Application::Loop()
 {
-    for (A_Entity* entity : _entities)
-    {
-        entity->Start();
-    }
-
     sf::Clock clock;
 
     while (window.isOpen())
     {
-        float deltaTime = clock.restart().asSeconds();
+        
+        float deltaTime = clock.restart().asMilliseconds();
 
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
-
-            for (A_Entity* entity : _entities)
-            {
-                entity->ManageCamera(window,camera);
-            }
-
-            window.clear();
-
-
-            for (A_Entity* entity : _entities)
-            {
-                entity->Update(deltaTime);
-            }
-
-            for (A_Entity* entity : _entities)
-            {
-                entity->LateUpdate(deltaTime);
-            }
-
-            _physics.Update(deltaTime);
-
-            for (A_Entity* entity : _entities)
-            {
-                entity->ManageRenderer(window);
-            }
-            window.display();
         }
+
+        for (A_Entity* entity : _entities)
+        {
+            entity->Update(deltaTime);
+        }
+
+        for (A_Entity* entity : _entities)
+        {
+            entity->LateUpdate(deltaTime);
+        }
+
+        _physics.Update(deltaTime);
+
+        window.clear();
+
+        for (A_Entity* entity : _entities)
+        {
+            entity->ManageRenderer(window);
+        }
+
+        window.display();
 
     }
 }
@@ -103,15 +93,21 @@ MyGameEngine::Application* MyGameEngine::Application::GetInstance()
 
 MyGameEngine::A_Entity* MyGameEngine::Application::GetEntity(A_Component* component)
 {
-    {
-        auto app = GetInstance();
+    auto app = GetInstance();
 
-        for (A_Entity* entity : app->_entities) {
-            for (A_Component* entityComponent : entity->_components) {
-                if (entityComponent == component) {
-                    return entity;
-                }
+    for (A_Entity* entity : app->_entities) {
+        for (A_Component* entityComponent : entity->_components) {
+            if (entityComponent == component) {
+                return entity;
             }
         }
     }
+
+    //return nullptr;
+}
+
+
+void MyGameEngine::Application::SetView(sf::View& view)
+{
+    window.setView(view);
 }

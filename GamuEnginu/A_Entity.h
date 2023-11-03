@@ -4,7 +4,6 @@
 #include <string>
 #include "A_Component.h"
 #include "RenderComponent.h"
-#include "Camera.h"
 
 namespace MyGameEngine {
 	class A_Entity : public sf::Transformable
@@ -26,7 +25,6 @@ namespace MyGameEngine {
 			return _name;
 		}
 		void ManageRenderer(sf::RenderWindow& rw);
-		void ManageCamera(sf::RenderWindow& rw, Camera& camera);
 
 		void Awake();
 		void Start();

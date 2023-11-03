@@ -4,6 +4,7 @@
 #include "A_Component.h"
 #include "MeshFilter.h"
 #include "RenderComponent.h"
+#include "Application.h"
 
 MyGameEngine::A_Entity::A_Entity(std::string name)
 {
@@ -20,12 +21,6 @@ void MyGameEngine::A_Entity::ManageRenderer(sf::RenderWindow& rw)
 	{
 		_renderComponent->Render(rw, state);
 	}
-}
-
-void MyGameEngine::A_Entity::ManageCamera(sf::RenderWindow& rw, Camera& camera)
-{
-	camera._centerPos = getPosition();
-	rw.setView(camera.SetView(rw.getSize()));
 }
 
 void MyGameEngine::A_Entity::Awake()
