@@ -9,6 +9,7 @@ MyGameEngine::Application* MyGameEngine::Application::_instance;
 MyGameEngine::Application::Application()
 {
 	_instance = this;
+
 }
 
 MyGameEngine::Application::~Application()
@@ -17,12 +18,19 @@ MyGameEngine::Application::~Application()
 
 void MyGameEngine::Application::Awake(int windowSizeX, int windowSizeY, std::string windowName)
 {
+
+    luaScript = new LuaScript();
+
     window.create(sf::VideoMode(windowSizeX, windowSizeY), windowName);
+
+    window.setVerticalSyncEnabled(true);
+    window.setKeyRepeatEnabled(false);
 
     for (A_Entity* entity : _entities)
     {
         entity->Awake();
     }
+
 }
 
 void MyGameEngine::Application::Start()
@@ -31,6 +39,9 @@ void MyGameEngine::Application::Start()
     {
 		entity->Start();
 	}
+
+    // Appeler la fonction d'initialisation du script Lua après l'initialisation de l'application
+    luaScript->SetScript("script1");
 }
 
 void MyGameEngine::Application::Loop()
@@ -40,7 +51,7 @@ void MyGameEngine::Application::Loop()
     while (window.isOpen())
     {
         
-        float deltaTime = clock.restart().asMilliseconds();
+        float deltaTime = clock.restart().asSeconds();
 
         sf::Event event;
         while (window.pollEvent(event))
@@ -48,6 +59,9 @@ void MyGameEngine::Application::Loop()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        // Appeler la fonction de mise à jour du script Lua avant la mise à jour des entités
+        luaScript->Update(deltaTime);
 
         for (A_Entity* entity : _entities)
         {

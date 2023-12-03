@@ -33,7 +33,7 @@ void MyGameEngine::BoxCollider::LateUpdate(float deltaTime)
 
 b2Shape* MyGameEngine::BoxCollider::GetColliderShape()
 {
-	shape.SetAsBox(_height / 2, _height / 2);
+	shape.SetAsBox(_width / 2, _height / 2);
 	return &shape;
 }
 

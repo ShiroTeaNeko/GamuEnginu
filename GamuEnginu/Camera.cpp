@@ -11,7 +11,7 @@ MyGameEngine::Camera::Camera()
 
 void MyGameEngine::Camera::EntityToFollow(A_Entity* entityToFollow)
 {
-	entityToFollow = entityToFollow;
+	_entityToFollow = entityToFollow;
 }
 
 void MyGameEngine::Camera::SetZoom(float zoom)
@@ -54,9 +54,9 @@ void MyGameEngine::Camera::Update(float deltaTime)
 
 void MyGameEngine::Camera::LateUpdate(float deltaTime)
 {
-	if (entityToFollow)
+	if (_entityToFollow)
 	{
-		view.setCenter(entityToFollow->getPosition());
+		view.setCenter(_entityToFollow->getPosition());
 		Application::GetInstance()->SetView(view);
 	}
 }

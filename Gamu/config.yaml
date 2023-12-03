@@ -1,7 +1,17 @@
 textures:
   - id: tree
     path: textures/tree.png
+  - id: character
+    path: textures/platformerPack_character.png
+  - id: environnement
+    path: textures/platformPack_tilesheet.png
+  - id: background
+    path: textures/background.png
 
 sounds:
   - id: sound1
     path: sounds/sound1.wav
+
+luaScripts:
+  - id: script1
+    path: luaScripts/luaScript1.lua

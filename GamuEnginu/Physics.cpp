@@ -3,7 +3,7 @@
 #include "RigidBody.h"
 #include "Application.h"
 
-MyGameEngine::Physics::Physics() : gravity(0.0f, 10.0f), world(gravity)
+MyGameEngine::Physics::Physics() : gravity(0.0f, 100.0f), world(gravity)
 {
 	world.SetContactListener(&collisionListener);
 }

@@ -4,6 +4,7 @@
 #include <yaml-cpp/yaml.h>
 #include <windows.h>
 #include <filesystem>
+#include "LuaScript.h"
 
 namespace MyGameEngine {
 	class ResourceManager
@@ -11,6 +12,7 @@ namespace MyGameEngine {
 	private:    
 		std::map<std::string, sf::Texture> textures;
 		std::map<std::string, sf::SoundBuffer> soundBuffers;
+		std::map<std::string, std::string> luaScripts;
 	protected:
 		static ResourceManager* _instance;
 	public:
@@ -19,6 +21,7 @@ namespace MyGameEngine {
 		static ResourceManager* GetInstance(); 
 		sf::Texture& getTexture(const std::string& id);
 		sf::SoundBuffer& getSoundBuffer(const std::string& id);
+		std::string getScript(const std::string& id);
 		void init(const std::string& configFile);
 		std::string getExecutablePath();
 	};

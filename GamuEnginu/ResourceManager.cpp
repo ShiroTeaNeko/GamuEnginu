@@ -3,6 +3,7 @@
 #include <yaml-cpp/yaml.h>
 #include <windows.h>
 #include <filesystem>
+#include "LuaScript.h"
 
 MyGameEngine::ResourceManager::ResourceManager()
 {
@@ -33,6 +34,11 @@ sf::SoundBuffer& MyGameEngine::ResourceManager::getSoundBuffer(const std::string
     return soundBuffers.at(id);
 }
 
+std::string MyGameEngine::ResourceManager::getScript(const std::string& id)
+{
+    return luaScripts.at(id);
+}
+
 void MyGameEngine::ResourceManager::init(const std::string& configFile)
 {
     YAML::Node config = YAML::LoadFile(configFile);
@@ -51,6 +57,13 @@ void MyGameEngine::ResourceManager::init(const std::string& configFile)
         soundBuffers[id] = sf::SoundBuffer();
         soundBuffers[id].loadFromFile(path);
     }
+
+    //charger les scripts lua a partir du yaml
+    for (const auto& entry : config["luaScripts"]) {
+		std::string id = entry["id"].as<std::string>();
+		std::string path = entry["path"].as<std::string>();
+		luaScripts[id] = path;
+	}
 }
 
 /*std::string MyGameEngine::ResourceManager::getExecutablePath()

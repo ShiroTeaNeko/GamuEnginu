@@ -34,3 +34,14 @@ void MyGameEngine::A_Collider::setFriction(float friction)
 		fixture->SetFriction(friction);
 	}
 }
+
+
+void MyGameEngine::A_Collider::setSensor(bool isSensor)
+{
+	if (fixture == nullptr) {
+		fixtureDef.isSensor = isSensor;
+	}
+	else {
+		fixture->SetSensor(isSensor);
+	}
+}

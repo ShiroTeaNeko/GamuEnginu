@@ -3,10 +3,14 @@
 #include <iostream>
 #include "CollisionComponent.h"
 #include "A_Entity.h"
+#include "CharacterController.h"
 #include "Application.h"
 
 void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 {
+	MyGameEngine::Application* app = MyGameEngine::Application::GetInstance();
+	CharacterController* cc = app->GetComponentFromEntity<CharacterController>(app->GetEntityByName("Character"));
+
 	b2Body* bodyA = contact->GetFixtureA()->GetBody();
 
 	for (A_Entity* entity : MyGameEngine::Application::GetInstance()->GetEntities()) {
@@ -17,6 +21,12 @@ void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 			if (currentRb) {
 
 				if (currentRb->GetBody() == bodyA) {
+
+					if (currentRb->GetBodyData()->bodyType == 1)
+					{
+						std::cout << "hit 1 " << std::endl;
+						cc->setGrounded(true);
+					}
 					for (A_Component* componentInEntityOfRigidbody : entity->_components) {
 
 						ICollisionable* currentICollisionable = dynamic_cast<ICollisionable*>(componentInEntityOfRigidbody);
@@ -40,6 +50,12 @@ void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 			if (currentRb) {
 
 				if (currentRb->GetBody() == bodyB) {
+
+					if (currentRb->GetBodyData()->bodyType == 1)
+					{
+						std::cout << "hit 2" << std::endl;
+						cc->setGrounded(true);
+					}
 					for (A_Component* componentInEntityOfRigidbody : entity->_components) {
 
 						ICollisionable* currentICollisionable = dynamic_cast<ICollisionable*>(componentInEntityOfRigidbody);

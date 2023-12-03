@@ -9,7 +9,7 @@ namespace MyGameEngine {
 	private:
 
 	protected:
-		A_Entity* entityToFollow;
+		A_Entity* _entityToFollow;
 	public:
 		Camera();
 		virtual void EntityToFollow(A_Entity* entityToFollow);

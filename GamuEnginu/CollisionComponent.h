@@ -8,13 +8,9 @@ namespace MyGameEngine
 	class CollisionComponent : public A_Component, public ICollisionable
 	{
 	private:
-		//void* owner;
 	public:
 		CollisionComponent();
 		~CollisionComponent();
-		/*void* GetOwner() {
-			return owner;
-		}*/
 
 		void BeginCollision(b2Contact* contact) override;
 		void EndCollision(b2Contact* contact) override;

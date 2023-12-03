@@ -17,6 +17,10 @@ namespace MyGameEngine {
 		//setters
 		void setDensity(float density);
 		void setFriction(float friction);
+		void setSensor(bool isSensor);
+
+		//getters
+
 	};
 }
 

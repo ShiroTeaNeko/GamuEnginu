@@ -5,6 +5,7 @@
 #include "Physics.h"
 #include "Camera.h"
 #include "RigidBody.h"
+#include "LuaScript.h"
 
 namespace MyGameEngine {
 	class Application
@@ -16,6 +17,7 @@ namespace MyGameEngine {
 		std::map<A_Entity*, A_Component*> _linkComponentAndEntity;
 		Physics _physics;
 		static Application* _instance;
+		LuaScript* luaScript;
 	public:
 		Application();
 		~Application();
@@ -99,6 +101,18 @@ namespace MyGameEngine {
 		}
 
 		static A_Entity* GetEntity(A_Component* component);
+
+		A_Entity* GetEntityByName(std::string name)
+		{
+			for (A_Entity* entity : _entities)
+			{
+				if (entity->getName() == name)
+				{
+					return entity;
+				}
+			}
+			return nullptr;
+		}
 	};
 
 }
