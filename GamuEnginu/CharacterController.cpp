@@ -23,7 +23,7 @@ void MyGameEngine::CharacterController::Update(float deltaTime)
 {
 	MyGameEngine::Application* app = MyGameEngine::Application::GetInstance();
 	MyGameEngine::RigidBody* rb = app->GetComponentFromEntity<MyGameEngine::RigidBody>(entity);
-	std::cout << state << std::endl;
+	//std::cout << state << std::endl;
 	//std::cout << _isGrounded << std::endl;
 
 	switch (state)

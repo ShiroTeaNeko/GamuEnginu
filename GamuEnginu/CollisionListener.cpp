@@ -24,7 +24,7 @@ void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 
 					if (currentRb->GetBodyData()->bodyType == 1)
 					{
-						std::cout << "hit 1 " << std::endl;
+						//std::cout << "hit 1 " << std::endl;
 						cc->setGrounded(true);
 					}
 					for (A_Component* componentInEntityOfRigidbody : entity->_components) {
@@ -53,7 +53,7 @@ void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 
 					if (currentRb->GetBodyData()->bodyType == 1)
 					{
-						std::cout << "hit 2" << std::endl;
+						//std::cout << "hit 2" << std::endl;
 						cc->setGrounded(true);
 					}
 					for (A_Component* componentInEntityOfRigidbody : entity->_components) {
@@ -69,7 +69,7 @@ void MyGameEngine::CollisionListener::BeginContact(b2Contact* contact)
 		}
 	}
 
-    std::cout << "Collision has started" << std::endl;
+    //std::cout << "Collision has started" << std::endl;
 }
 
 void MyGameEngine::CollisionListener::EndContact(b2Contact* contact)
@@ -77,5 +77,5 @@ void MyGameEngine::CollisionListener::EndContact(b2Contact* contact)
     /*b2BodyUserData* userDataA = &contact->GetFixtureA()->GetBody()->GetUserData();
 	b2BodyUserData* userDataB = &contact->GetFixtureB()->GetBody()->GetUserData();*/
 
-	std::cout << "Collision has ended" << std::endl;
+	//std::cout << "Collision has ended" << std::endl;
 }

@@ -13,12 +13,12 @@ MyGameEngine::CollisionComponent::~CollisionComponent()
 
 void MyGameEngine::CollisionComponent::BeginCollision(b2Contact* contact)
 {
-	std::cout << "Collision Begin" << std::endl;
+	//std::cout << "Collision Begin" << std::endl;
 }
 
 void MyGameEngine::CollisionComponent::EndCollision(b2Contact* contact)
 {
-	std::cout << "Collision End" << std::endl;
+	//std::cout << "Collision End" << std::endl;
 }
 
 void MyGameEngine::CollisionComponent::Awake()
